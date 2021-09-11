@@ -11,14 +11,11 @@ class Bb(models.Model):
 
 
     title = models.CharField(max_length=50, verbose_name='Товар', help_text='Введите название товара')
-
-
     content = models.TextField(null=True, blank=True, verbose_name='Описание', help_text='Краткое описание товара')
     price = models.FloatField(null=True,default=1, blank=False, verbose_name='Цена',
                               help_text='Введице цену товара в рублях',
                               validators = [MinValueValidator(1.0),
                                             MaxValueValidator(100000)])
-
     published = models.DateTimeField(auto_now_add=True, db_index=True, verbose_name='Опубликовано')
 
     phone_regex = RegexValidator(regex=r'^\+?1?\d{9,15}$',
